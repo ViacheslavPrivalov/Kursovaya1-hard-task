@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class EmployeeBook {
     private final Employee[] employees;
     private int size = 10;
@@ -244,12 +246,35 @@ public class EmployeeBook {
     }
 
     public void printDepartment() {
+        StringBuilder sb1 = new StringBuilder("Отдел 1:");
+        StringBuilder sb2 = new StringBuilder("Отдел 2:");
+        StringBuilder sb3 = new StringBuilder("Отдел 3:");
+        StringBuilder sb4 = new StringBuilder("Отдел 4:");
+        StringBuilder sb5 = new StringBuilder("Отдел 5:");
         for (int i = 0; i < employees.length; i++) {
-            for (int j = i + 1; j < employees.length; j++) {
-                if (employees[i].getDepartment() == employees[j].getDepartment()) {
-                    System.out.println(employees[i].getEmployeeName() + " " + employees[j].getEmployeeName());
-                }
+            switch (employees[i].getDepartment()) {
+                case 1:
+                    sb1.append(" " + employees[i].getEmployeeName());
+                    break;
+                case 2:
+                    sb2.append(" " + employees[i].getEmployeeName());
+                    break;
+                case 3:
+                    sb3.append(" " + employees[i].getEmployeeName());
+                    break;
+                case 4:
+                    sb4.append(" " + employees[i].getEmployeeName());
+                    break;
+                case 5:
+                    sb5.append(" " + employees[i].getEmployeeName());
+                    break;
             }
         }
+        System.out.println(sb1);
+        System.out.println(sb2);
+        System.out.println(sb3);
+        System.out.println(sb4);
+        System.out.println(sb5);
+
     }
 }
