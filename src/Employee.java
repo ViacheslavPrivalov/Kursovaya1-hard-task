@@ -37,4 +37,11 @@ public class Employee {
         this.salary = salary;
     }
 
+    @Override
+    public String toString() {
+        return "Сотрудник: " + this.getEmployeeName()
+                + ", Отдел: " + this.getDepartment()
+                + ", Зарплата: " + this.getSalary() + ", id: " + this.getId();
+    }
+
 }

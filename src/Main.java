@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class Main {
     public static void main(String[] args) {
         EmployeeBook employeeBook = new EmployeeBook();
@@ -25,6 +23,7 @@ public class Main {
         employeeBook.addEmployee("Иванов Иван Иванович11", 1, 10_000);
         employeeBook.printEmployeesNames();
         System.out.println();
+        employeeBook.changeEmployee("Пётр",1, 500_000);
         employeeBook.changeEmployee("Иванов Иван Иванович11", 2, 60_000);
         employeeBook.toString();
         System.out.println();

@@ -22,9 +22,7 @@ public class EmployeeBook {
     public String toString() {
         for (Employee employee : employees) {
             if (employee != null) {
-                System.out.println("Сотрудник: " + employee.getEmployeeName()
-                        + ", Отдел: " + employee.getDepartment()
-                        + ", Зарплата: " + employee.getSalary() + ", id: " + employee.getId());
+                System.out.println(employee);
             }
         }
         return null;
@@ -42,40 +40,30 @@ public class EmployeeBook {
 
     public String minSalaryEmployee() {
         double min = Double.MAX_VALUE;
+        Employee minSalaryEmp = null;
         for (Employee employee : employees) {
             if (employee != null) {
                 if (employee.getSalary() < min) {
                     min = employee.getSalary();
+                    minSalaryEmp = employee;
                 }
             }
         }
-        for (Employee employee : employees) {
-            if (employee.getSalary() == min) {
-                return "Сотрудник: " + employee.getEmployeeName()
-                        + ", Отдел: " + employee.getDepartment()
-                        + ", Зарплата: " + employee.getSalary() + ", id: " + employee.getId();
-            }
-        }
-        return null;
+        return minSalaryEmp.toString();
     }
 
     public String maxSalaryEmployee() {
         double max = Double.MIN_VALUE;
+        Employee maxSalaryEmp = null;
         for (Employee employee : employees) {
             if (employee != null) {
                 if (employee.getSalary() > max) {
                     max = employee.getSalary();
+                    maxSalaryEmp = employee;
                 }
             }
         }
-        for (Employee employee : employees) {
-            if (employee.getSalary() == max) {
-                return "Сотрудник: " + employee.getEmployeeName()
-                        + ", Отдел: " + employee.getDepartment()
-                        + ", Зарплата: " + employee.getSalary() + ", id: " + employee.getId();
-            }
-        }
-        return null;
+        return maxSalaryEmp.toString();
     }
 
     public double averageSalary() {
@@ -101,44 +89,34 @@ public class EmployeeBook {
 
     public String findMinSalaryEmployee(int department) {
         double min = Double.MAX_VALUE;
+        Employee minSalaryEmp = null;
         for (Employee employee : employees) {
             if (employee != null) {
                 if (employee.getDepartment() == department) {
                     if (employee.getSalary() < min) {
                         min = employee.getSalary();
+                        minSalaryEmp = employee;
                     }
                 }
             }
         }
-        for (Employee employee : employees) {
-            if (employee.getSalary() == min) {
-                return "Сотрудник: " + employee.getEmployeeName()
-                        + ", Отдел: " + employee.getDepartment()
-                        + ", Зарплата: " + employee.getSalary() + ", id: " + employee.getId();
-            }
-        }
-        return null;
+        return minSalaryEmp.toString();
     }
 
     public String findMaxSalaryEmployee(int department) {
         double max = Double.MIN_VALUE;
+        Employee maxSalaryEmp = null;
         for (Employee employee : employees) {
             if (employee != null) {
                 if (employee.getDepartment() == department) {
                     if (employee.getSalary() > max) {
                         max = employee.getSalary();
+                        maxSalaryEmp = employee;
                     }
                 }
             }
         }
-        for (Employee employee : employees) {
-            if (employee.getSalary() == max) {
-                return "Сотрудник: " + employee.getEmployeeName()
-                        + ", Отдел: " + employee.getDepartment()
-                        + ", Зарплата: " + employee.getSalary() + ", id: " + employee.getId();
-            }
-        }
-        return null;
+        return maxSalaryEmp.toString();
     }
 
     public double findSalarySum(int department) {
@@ -179,8 +157,7 @@ public class EmployeeBook {
         for (Employee employee : employees) {
             if (employee != null) {
                 if (employee.getDepartment() == department) {
-                    System.out.println("Сотрудник: " + employee.getEmployeeName()
-                            + ", Зарплата: " + employee.getSalary() + ", id: " + employee.getId());
+                    System.out.println(employee);
                 }
             }
         }
@@ -190,8 +167,7 @@ public class EmployeeBook {
         for (Employee employee : employees) {
             if (employee != null) {
                 if (employee.getSalary() < num) {
-                    System.out.println("Сотрудник: " + employee.getEmployeeName()
-                            + ", Зарплата: " + employee.getSalary() + ", id: " + employee.getId());
+                    System.out.println(employee);
                 }
             }
         }
@@ -201,27 +177,21 @@ public class EmployeeBook {
         for (Employee employee : employees) {
             if (employee != null) {
                 if (employee.getSalary() >= num) {
-                    System.out.println("Сотрудник: " + employee.getEmployeeName()
-                            + ", Зарплата: " + employee.getSalary() + ", id: " + employee.getId());
+                    System.out.println(employee);
                 }
             }
         }
     }
 
     public void addEmployee(String employeeName, int department, double salary) {
-        int count = 0;
         for (int i = 0; i < employees.length; i++) {
-            if (employees[i] != null) {
-                count++;
-            } else {
+            if (employees[i] == null) {
                 Employee newEmployee = new Employee(employeeName, department, salary);
                 employees[i] = newEmployee;
                 return;
             }
-            if (count >= employees.length) {
-                System.out.println("Нельзя добавить сотрудника, закончилось место");
-            }
         }
+        System.out.println("Нельзя добавить сотрудника, закончилось место");
     }
 
     public void removeEmployee(String employeeName) {
@@ -243,6 +213,7 @@ public class EmployeeBook {
                 return;
             }
         }
+        System.out.println("Сотрудника по имени: " + employeeName + " нет в списке");
     }
 
     public void printDepartment() {
